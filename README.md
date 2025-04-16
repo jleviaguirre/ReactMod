@@ -4,7 +4,7 @@ This is a [Spotfire mod visualization](https://spotfiresoftware.github.io/spotfi
 
 This Mod was created from a new spotfire visualization mod template as per the [Spotifre Mods documentation](https://spotfiresoftware.github.io/spotfire-mods/docs/getting-started/#developing-a-mod) and then tweaked to be able to use the React framework.
 
-# Get Started
+## Get Started
 Download or clone this repo and from a terminal run:
  ``` sh
  npm install #install dependencies from package.json
@@ -12,7 +12,7 @@ Download or clone this repo and from a terminal run:
  npm run server #starts the live server so you can connec to spotfire (web or client)
 ```
 
-# Adding React to a Spotfire Visualization Mod template 
+## Adding React to a Spotfire Visualization Mod template 
 The result of this repo comes from a set of changes done to a regular Spotfire Visualization Mod template to add the React Framework. Here are the steps made in case you want to review the changes:
 
 ``` sh

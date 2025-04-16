@@ -1,43 +1,52 @@
-# My Visualization Mod
+# Spotfire/React Visualization Mod
 
-Here you should add some information about the visualization mod.
+This is a [Spotfire mod visualization](https://spotfiresoftware.github.io/spotfire-mods/docs/visualization-mods/) template powered by [React](https://react.dev/)
 
-## Getting started
+This Mod was created from a new spotfire visualization mod template as per the [Spotifre Mods documentation](https://spotfiresoftware.github.io/spotfire-mods/docs/getting-started/#developing-a-mod) and then tweaked to be able to use the React framework.
 
-To develop you need to have [Node.js](https://nodejs.org/en) installed.
-The recommended IDE for developing Spotfire mods is [Visual Studio Code](https://code.visualstudio.com/).
-
-Before you can start developing run the following commands in this folder:
-
-```sh
-npm install # Install dependencies.
-npm run build # Builds the mod and generates types from the manifest.
-npm run server #starts the live server so you can connect to spotfire
+# Get Started
+Download or clone this repo and from a terminal run:
+ ``` sh
+ npm install #install dependencies from package.json
+ npm run build #Builds the od and generates types from the manifes
+ npm run server #starts the live server so you can connec to spotfire (web or client)
 ```
 
-Open this folder in Visual Studio Code and run the default build task, either by pressing "Ctrl + Shift + B" or by running the "Start watchers" task.
-This will launch three watchers:
-- the [TypeScript](https://www.typescriptlang.org/) typechecker, which makes sure you are using the API in a type-safe manner.
-- a build watcher, which automatically bundles the TypeScript file found in the `src/main.ts` folder into a JavaScript file which is put in the `build` folder.
-- the mods development server, which serves the mod files and mod manifest to Spotfire during development.
-Your mod will be rebuilt when any TypeScript file is changed or when the mod manifest changes.
+# Adding React to a Spotfire Visualization Mod template 
+The result of this repo comes from a set of changes done to a regular Spotfire Visualization Mod template to add the React Framework. Here are the steps made in case you want to review the changes:
 
-To build outside of Visual Studio Code run:
-
-```sh
-npm run build # Builds a minimized version of the mod.
-npm run build:dev # Starts a file watcher and builds an unminimized version of the mod, including source maps.
+``` sh
+npx @spotfire/mods-sdk@latest new visualization # create new spotfire visual mod template
+npm install react react-dom #install react libraries
+npm install --save-dev @types/react @types/react-dom
+npm install @spotfire/mods-api #add spotfire api
+npm install # Install all other dependencies.
 ```
 
-In this template you will find the following files and directories:
+### esbuild.config.js
+Add these lines to export default
+``` js
+        loader: {
+            ".js": "jsx",
+            ".ts": "tsx",
+            ".tsx": "tsx",
+        },
+        jsx: "automatic",
+```
 
-File/Directory Name | Explanation
----|---
-index.html|The main entry point of the mod. Contains a static script to load the API. The HEAD tag should contain the required `script` and `style` elements.
-main.css|Optional static styles.
-src/|Contains all TypeScript source files.
-build/|Contains the bundled result (and possibly source maps) for the TypeScript code. This is the file that should be refered to from the mod manifest file and index.html.
-.vscode/|Contains files which make the development experience in Visual Studio Code seamless. This includes development tasks, debugging configuration, and IntelliSense support for the mods JSON schema.
-mod-manifest.json|For more information on the manifest file see the documentation website.
-package.json|Defines the npm dependencies of your project as well as a set of scripts used during development.
-tsconfig.json|Contains the TypeScript configuration for this project.
+### Create src/App.tsx
+This file is the React functional compmonent written in TypeScript and serves as the base for the custom visual
+
+### main-react.tsx
+This is a wrapper of main.ts and serves as an entry point for integrating the React app with Spotfire Mod framework. Basically we moved the logic from main.ts to main-react.tsx
+
+### main.ts
+We can still put logic here as we normally do, but if we want to use React, we pass the parameters to the main react function found in main-react.tsx
+
+### tsconfig.json
+Here we add a couple of additional settings to the compilerOptions for our Spotfire-React Visualization Mod
+``` json
+ "moduleResolution": "Bundler",
+ "esModuleInterop": true,
+ "jsx": "react-jsx" 
+```

@@ -8,6 +8,9 @@
         "strict": true,
         "noEmit": true,
         "allowUmdGlobalAccess": true,
-        "moduleResolution": "Bundler"
+        "moduleResolution": "Bundler",
+        "esModuleInterop": true,
+        "jsx": "react-jsx" // Enable JSX support
+
     }
 }

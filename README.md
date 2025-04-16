@@ -12,6 +12,7 @@ Before you can start developing run the following commands in this folder:
 ```sh
 npm install # Install dependencies.
 npm run build # Builds the mod and generates types from the manifest.
+npm run server #starts the live server so you can connect to spotfire
 ```
 
 Open this folder in Visual Studio Code and run the default build task, either by pressing "Ctrl + Shift + B" or by running the "Start watchers" task.
